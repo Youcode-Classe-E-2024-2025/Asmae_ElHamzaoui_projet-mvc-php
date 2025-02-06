@@ -1,18 +1,20 @@
 <?php
-namespace App\Core;
-
-//  gérer le système de routage, en analysant les URL et en appelant les méthodes des contrôleurs appropriées
 class Router {
-    private $routes = [];
+    public function handleRequest() {
+        $url = $_SERVER['REQUEST_URI'];
+        var_dump($url);  // Pour voir l'URL capturée
 
-    public function addRoute($method, $route, $action) {
-        $this->routes[$method][$route] = $action;
-    }
-
-    public function handleRequest($method, $uri) {
-        if (isset($this->routes[$method][$uri])) {
-            return $this->routes[$method][$uri];
+        $routes = include('../config/routes.php');
+        foreach ($routes as $route => $controllerAction) {
+            if (preg_match("~^$route$~", $url, $matches)) {
+                list($controller, $action) = explode('@', $controllerAction);
+                var_dump($controller, $action);  // Pour voir le contrôleur et l'action
+                $controller = new $controller();
+                $controller->$action(...array_slice($matches, 1));
+                return;
+            }
         }
-        throw new \Exception('Route not found.');
+        echo "Page non trouvée!";
     }
 }
+

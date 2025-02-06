@@ -13,9 +13,9 @@ class ComposerStaticInit7edc290c23c58b03fbb2bf00ac8c0cdf
     );
 
     public static $prefixLengthsPsr4 = array (
-        'T' => 
+        'Y' => 
         array (
-            'Twig\\' => 5,
+            'Ycode\\AsmaeElHamzaouiProjetMvcPhp\\' => 34,
         ),
         'S' => 
         array (
@@ -38,9 +38,9 @@ class ComposerStaticInit7edc290c23c58b03fbb2bf00ac8c0cdf
     );
 
     public static $prefixDirsPsr4 = array (
-        'Twig\\' => 
+        'Ycode\\AsmaeElHamzaouiProjetMvcPhp\\' => 
         array (
-            0 => __DIR__ . '/..' . '/twig/twig/src',
+            0 => __DIR__ . '/../..' . '/src',
         ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (

@@ -1,6 +1,18 @@
+
 {
-  "require": {
-    "twig/twig": "3.3",
-    "vlucas/phpdotenv": "^5.0"
-  }
+    "name": "ycode/asmae_el-hamzaoui_projet-mvc-php",
+    "autoload": {
+        "psr-4": {
+            "Ycode\\AsmaeElHamzaouiProjetMvcPhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "AsmaeElHamzaoui",
+            "email": "asmaeelhamzaoui77@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
 }
