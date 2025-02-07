@@ -3,18 +3,16 @@
 namespace App\Controllers\Front;
 
 use App\Core\Controller;
-use App\Models\Article;
 
 class HomeController extends Controller
 {
-    // Méthode pour afficher la page d'accueil
     public function index()
     {
-        // Récupérer tous les articles
-        $articleModel = new Article();
-        $articles = $articleModel->getAllArticles();
+        $data = [
+            'title' => 'Gestion des Articles',
+            'welcomeMessage' => 'Bienvenue sur la plateforme de gestion des articles',
+        ];
 
-        // Passer les articles à la vue
-        $this->render('front.home', ['articles' => $articles]);
+        $this->render('front.home', $data); // Affiche la vue home.twig
     }
 }
