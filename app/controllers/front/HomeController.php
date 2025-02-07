@@ -13,6 +13,6 @@ class HomeController extends Controller
             'welcomeMessage' => 'Bienvenue sur la plateforme de gestion des articles',
         ];
 
-        $this->render('front.home', $data); // Affiche la vue home.twig
+        $this->render('front/home', $data); // Affiche la vue home.twig
     }
 }
