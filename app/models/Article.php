@@ -124,16 +124,17 @@ class Article extends Model
     public function update()
     {
         $stmt = $this->db->prepare("UPDATE articles SET title = :title, content = :content, updated_at = :updated_at WHERE id = :id");
-
+    
         // Bind des valeurs des propriétés de l'article
         $stmt->bindValue(':title', $this->getTitle());
         $stmt->bindValue(':content', $this->getContent());
         $stmt->bindValue(':updated_at', $this->getUpdatedAt());
         $stmt->bindValue(':id', $this->getId());
-
+    
         // Exécution de la requête pour mettre à jour l'article dans la base de données
         return $stmt->execute();
     }
+    
 
     // Méthode pour supprimer un article de la base de données
     public function delete()
