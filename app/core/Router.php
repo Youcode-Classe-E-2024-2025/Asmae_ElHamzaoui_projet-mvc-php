@@ -1,20 +1,40 @@
 <?php
-class Router {
-    public function handleRequest() {
-        $url = $_SERVER['REQUEST_URI'];
-        var_dump($url);  // Pour voir l'URL capturée
 
-        $routes = include('../config/routes.php');
-        foreach ($routes as $route => $controllerAction) {
-            if (preg_match("~^$route$~", $url, $matches)) {
-                list($controller, $action) = explode('@', $controllerAction);
-                var_dump($controller, $action);  // Pour voir le contrôleur et l'action
-                $controller = new $controller();
-                $controller->$action(...array_slice($matches, 1));
+namespace App\Core;
+
+class Router
+{
+    private $routes = [];
+
+    // Enregistrement des routes
+    public function addRoute($method, $route, $controller, $action)
+    {
+        $this->routes[] = [
+            'method' => $method,
+            'route' => $route,
+            'controller' => $controller,
+            'action' => $action
+        ];
+    }
+
+    // Dispatch (dispatching) des requêtes
+    public function dispatch($url)
+    {
+        // Suppression de la partie du chemin public
+        $url = str_replace('/projet-mvc-php/public', '', $url);
+        
+        // Recherche de la route correspondante
+        foreach ($this->routes as $route) {
+            if ($_SERVER['REQUEST_METHOD'] == $route['method'] && $url == $route['route']) {
+                // Instanciation du contrôleur et appel de l'action
+                $controllerName = 'App\Controllers\\' . $route['controller'];
+                $controller = new $controllerName();
+                $controller->{$route['action']}();
                 return;
             }
         }
-        echo "Page non trouvée!";
+
+        // Si aucune route ne correspond
+        echo "Page not found!";
     }
 }
-
