@@ -32,20 +32,6 @@
 
         <!-- Menu de déconnexion -->
         <div class="flex space-x-6">
-            <div class="relative">
-                <!-- Bouton Menu -->
-                <button onclick="toggleMenu()" class="text-yellow-400">Menu</button>
-    
-                <!-- Menu déroulant -->
-                <div id="menu" class="hidden absolute right-0 mt-2 bg-gray-800 rounded-lg shadow-lg w-48 py-2">
-                    <ul class="text-yellow-400 text-lg">
-                        <!-- Lien vers Dashboard -->
-                        <li><a href="dashboard.twig" class="block px-4 py-2 hover:bg-gray-700">Dashboard</a></li>
-                        <!-- Lien vers Users -->
-                        <li><a href="users.twig" class="block px-4 py-2 hover:bg-gray-700">Users</a></li>
-                    </ul>
-                </div>
-            </div>
             <a href="logOut.twig" class="text-yellow-400 hover:underline">Log out</a>
         </div>
     </header>
@@ -66,104 +52,26 @@
 
             <!-- Liste des articles sous forme de cartes -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <!-- Exemple d'article 1 -->
-                <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:bg-gray-600 transition">
-                    <h3 class="text-xl font-semibold text-yellow-400">Article 1</h3>
-                    <p class="text-gray-300 mt-2">Description de l'article 1...</p>
-                    <div class="mt-4 flex justify-between">
-                        <button class="text-yellow-400 hover:underline">Modifier</button>
-                        <button class="text-red-500 hover:underline">Supprimer</button>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {% for article in articles %}
+                    <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:bg-gray-600 transition">
+                        <h3 class="text-xl font-semibold text-yellow-400">{{ article.title }}</h3>
+                        <p class="text-gray-300 mt-2">{{ article.content }}</p>
+                        <div class="mt-4 flex justify-between">
+                            <a href="/dashboard/update/{{ article.id }}" class="text-yellow-400 hover:underline">Modifier</a>
+                            <a href="/dashboard/delete/{{ article.id }}" class="text-red-500 hover:underline">Supprimer</a>
+                        </div>
                     </div>
-                </div>
-                <!-- Exemple d'article 2 -->
-                <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:bg-gray-600 transition">
-                    <h3 class="text-xl font-semibold text-yellow-400">Article 2</h3>
-                    <p class="text-gray-300 mt-2">Description de l'article 2...</p>
-                    <div class="mt-4 flex justify-between">
-                        <button class="text-yellow-400 hover:underline">Modifier</button>
-                        <button class="text-red-500 hover:underline">Supprimer</button>
-                    </div>
-                </div>
-                <!-- Exemple d'article 3 -->
-                <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:bg-gray-600 transition">
-                    <h3 class="text-xl font-semibold text-yellow-400">Article 3</h3>
-                    <p class="text-gray-300 mt-2">Description de l'article 3...</p>
-                    <div class="mt-4 flex justify-between">
-                        <button class="text-yellow-400 hover:underline">Modifier</button>
-                        <button class="text-red-500 hover:underline">Supprimer</button>
-                    </div>
-                </div>
-                <!-- Exemple d'article 3 -->
-                <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:bg-gray-600 transition">
-                    <h3 class="text-xl font-semibold text-yellow-400">Article 3</h3>
-                    <p class="text-gray-300 mt-2">Description de l'article 3...</p>
-                    <div class="mt-4 flex justify-between">
-                        <button class="text-yellow-400 hover:underline">Modifier</button>
-                        <button class="text-red-500 hover:underline">Supprimer</button>
-                    </div>
-                </div>
-                <!-- Exemple d'article 3 -->
-                <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:bg-gray-600 transition">
-                    <h3 class="text-xl font-semibold text-yellow-400">Article 3</h3>
-                    <p class="text-gray-300 mt-2">Description de l'article 3...</p>
-                    <div class="mt-4 flex justify-between">
-                        <button class="text-yellow-400 hover:underline">Modifier</button>
-                        <button class="text-red-500 hover:underline">Supprimer</button>
-                    </div>
-                </div>
-                <!-- Exemple d'article 3 -->
-                <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:bg-gray-600 transition">
-                    <h3 class="text-xl font-semibold text-yellow-400">Article 3</h3>
-                    <p class="text-gray-300 mt-2">Description de l'article 3...</p>
-                    <div class="mt-4 flex justify-between">
-                        <button class="text-yellow-400 hover:underline">Modifier</button>
-                        <button class="text-red-500 hover:underline">Supprimer</button>
-                    </div>
-                </div>
-                <!-- Exemple d'article 3 -->
-                <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:bg-gray-600 transition">
-                    <h3 class="text-xl font-semibold text-yellow-400">Article 3</h3>
-                    <p class="text-gray-300 mt-2">Description de l'article 3...</p>
-                    <div class="mt-4 flex justify-between">
-                        <button class="text-yellow-400 hover:underline">Modifier</button>
-                        <button class="text-red-500 hover:underline">Supprimer</button>
-                    </div>
-                </div>
-                <!-- Exemple d'article 3 -->
-                <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:bg-gray-600 transition">
-                    <h3 class="text-xl font-semibold text-yellow-400">Article 3</h3>
-                    <p class="text-gray-300 mt-2">Description de l'article 3...</p>
-                    <div class="mt-4 flex justify-between">
-                        <button class="text-yellow-400 hover:underline">Modifier</button>
-                        <button class="text-red-500 hover:underline">Supprimer</button>
-                    </div>
-                </div>
-                <!-- Exemple d'article 3 -->
-                <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:bg-gray-600 transition">
-                    <h3 class="text-xl font-semibold text-yellow-400">Article 3</h3>
-                    <p class="text-gray-300 mt-2">Description de l'article 3...</p>
-                    <div class="mt-4 flex justify-between">
-                        <button class="text-yellow-400 hover:underline">Modifier</button>
-                        <button class="text-red-500 hover:underline">Supprimer</button>
-                    </div>
-                </div>
-                <!-- Exemple d'article 3 -->
-                <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:bg-gray-600 transition">
-                    <h3 class="text-xl font-semibold text-yellow-400">Article 3</h3>
-                    <p class="text-gray-300 mt-2">Description de l'article 3...</p>
-                    <div class="mt-4 flex justify-between">
-                        <button class="text-yellow-400 hover:underline">Modifier</button>
-                        <button class="text-red-500 hover:underline">Supprimer</button>
-                    </div>
-                </div>
-                <!-- Ajoutez d'autres articles ici si nécessaire -->
+                    {% endfor %}
+                </div>                
+
             </div>
 
             <!-- Modal Ajouter Article -->
             <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
                 <div class="bg-gray-800 p-6 rounded-lg w-96">
                     <h2 class="text-3xl font-bold text-yellow-400 mb-4 text-center">Ajouter un Article</h2>
-                    <form action="#" method="POST">
+                    <form action="/dashboard" method="POST">
                         <!-- Titre de l'article -->
                         <div class="mb-4">
                             <label for="title" class="block text-gray-300">Titre</label>
