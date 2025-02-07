@@ -6,6 +6,11 @@ $router->addRoute('GET', '/login', 'front\AuthController', 'login'); // Page de 
 $router->addRoute('POST', '/login', 'front\AuthController', 'processLogin'); // Traitement de la connexion
 $router->addRoute('GET', '/sign-up', 'front\AuthController', 'signUp'); // Page d'inscription
 $router->addRoute('POST', '/sign-up', 'front\AuthController', 'processSignUp'); // Traitement de l'inscription
+// Définir une route pour la page des articles
+$router->addRoute('GET', '/article', 'front\ArticleController', 'index');
+// Exemple de route pour le tableau de bord
+$router->addRoute('GET', '/dashboard', 'back\DashboardController', 'index');
+
 
 // Définition des routes pour le Back Office (Admin)
 $router->addRoute('GET', '/admin/dashboard', 'back\DashboardController', 'index'); // Dashboard Admin
