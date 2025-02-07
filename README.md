@@ -78,7 +78,7 @@ cd Asmae_ElHmazaoui_projet-mvc-php
 - **Style et animations** : Ajoutés avec CSS(tailwind) et JavaScript.
 
 ## Structure du Projet
- ![Structure du projet](/app/public/assets/images/structure.png)
+ ![Structure du projet](public/assets/images/structure.png)
 ## Outils Utilisés
 
 - **Serveur Web Apache** : Hébergement du projet localement.
