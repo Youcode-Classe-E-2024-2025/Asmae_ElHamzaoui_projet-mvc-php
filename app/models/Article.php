@@ -8,10 +8,58 @@ use PDO;
 class Article extends Model
 {
     // Attributs de l'article
-    public $id;
-    public $title;
-    public $description;
-    public $created_at;
+    private $id;
+    private $title;
+    private $description;
+    private $created_at;
+
+    // Getter pour l'ID
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    // Setter pour l'ID
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    // Getter pour le titre
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    // Setter pour le titre
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    // Getter pour la description
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    // Setter pour la description
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    // Getter pour la date de création
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    // Setter pour la date de création
+    public function setCreatedAt($created_at)
+    {
+        $this->created_at = $created_at;
+    }
 
     // Méthode pour ajouter un article
     public function createArticle($title, $description)
@@ -44,7 +92,15 @@ class Article extends Model
         $stmt->bindValue(':id', $id);
         $stmt->execute();
 
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($result) {
+            $this->setId($result['id']);
+            $this->setTitle($result['title']);
+            $this->setDescription($result['description']);
+            $this->setCreatedAt($result['created_at']);
+        }
+
+        return $result;
     }
 
     // Méthode pour modifier un article
