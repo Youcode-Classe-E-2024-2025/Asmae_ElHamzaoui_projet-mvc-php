@@ -1,8 +1,20 @@
 <?php
-class HomeController extends Controller {
-    public function index() {
-        // Vérifie que tu passes bien des données à la vue
-        $this->view('front/home');
+
+namespace App\Controllers\Front;
+
+use App\Core\Controller;
+use App\Models\Article;
+
+class HomeController extends Controller
+{
+    // Méthode pour afficher la page d'accueil
+    public function index()
+    {
+        // Récupérer tous les articles
+        $articleModel = new Article();
+        $articles = $articleModel->getAllArticles();
+
+        // Passer les articles à la vue
+        $this->render('front.home', ['articles' => $articles]);
     }
 }
-
