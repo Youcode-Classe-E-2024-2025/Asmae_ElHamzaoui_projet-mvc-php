@@ -3,10 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ article.title }}</title>
+    <title>Gestion des Articles</title>
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Inclusion de Tailwind CSS via CDN -->
 </head>
-<body>
-    <h1>{{ article.title }}</h1>
-    <p>{{ article.content }}</p>
+<body class="bg-gradient-to-b from-gray-800 to-black text-white font-sans">
+
+    <!-- Header -->
+    <header class="flex justify-between items-center p-6 bg-gray-900">
+        <!-- Logo -->
+        <div class="text-white text-xl font-semibold">
+            <a href="/" class="text-yellow-400">Article</a> <!-- Remplacez MonLogo par l'image ou le texte de votre logo -->
+        </div>
+        
+        <!-- Menu de connexion -->
+        <div class="flex space-x-6">
+            <a href="/logOut" class="text-yellow-400 hover:underline">Log out</a>
+        </div>
+    </header>
+
+    <!-- Titre principal centré -->
+    <div class="flex">
+        <h1 class="text-5xl font-bold">Gestion des Articles</h1>
+    </div>
+
 </body>
 </html>
